@@ -3,21 +3,560 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>RaceKit Works — custom finisher medals</title>
+<title>RaceKit Works — Custom finisher medals for Malaysian races</title>
+<meta name="description" content="Custom 70 mm shaped zinc-alloy finisher medals for race organisers, event management companies and virtual-run organisers in Malaysia. Free artwork mock-up, signed pre-production sample, delivery to Kuala Lumpur and the Klang Valley.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RaceKit Works — Custom finisher medals">
+<meta property="og:description" content="Finisher medals planned back from your race day: free mock-up, signed pre-production sample, delivery to one address in KL / Klang Valley.">
+<meta property="og:url" content="https://racekitworks.com/">
+<link rel="canonical" href="https://racekitworks.com/">
+<meta name="theme-color" content="#F46A2E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M18 2h12l6 22-8 4zM46 2H34l-6 22 8 4z' fill='%23F46A2E'/%3E%3Cpath d='M32 22l17 6 7 15-7 15-17 6-17-6-7-15 7-15z' fill='%23F4B740' stroke='%2313303B' stroke-width='4'/%3E%3Cpath d='M16 44q8-9 16-4t16-4' stroke='%2313303B' stroke-width='4' fill='none'/%3E%3C/svg%3E">
 <style>
-  html,body{height:100%;margin:0}
-  body{display:grid;place-items:center;background:#f7f1e8;color:#1d2b3a;font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:24px;text-align:center}
-  h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px;letter-spacing:.01em}
-  p{margin:6px 0;max-width:34em}
-  a{color:#b4532a}
+@font-face{font-family:"National Park";src:url(assets/NationalPark-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Work Sans";src:url(assets/WorkSans-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Work Sans";src:url(assets/WorkSans-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Red Hat Mono";src:url(assets/RedHatMono-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+
+:root{
+  --ground:#FFF5EA;
+  --paper:#FFFFFF;
+  --ink:#13303B;
+  --ink-2:#4A5F66;
+  --sun:#F46A2E;
+  --on-sun:#0F2229;
+  --sun-text:#B83A0B;
+  --teal:#0E9C93;
+  --gold:#F4B740;
+  --peach:#FFD9B8;
+  --display:"National Park","Work Sans",system-ui,sans-serif;
+  --body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Red Hat Mono",ui-monospace,Menlo,monospace;
+  --gutter:clamp(20px,4.5vw,120px);
+  --fs-body:clamp(17px,0.55vw + 12px,26px);
+  --fs-small:clamp(14px,0.35vw + 10px,19px);
+  --fs-h2:clamp(36px,4.2vw,118px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.55;overflow-x:hidden}
+::selection{background:var(--sun);color:var(--on-sun)}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:4px;border-radius:6px}
+img,svg{display:block;max-width:100%}
+.wrap{padding-inline:var(--gutter)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:12px 16px;z-index:10}
+.skip:focus{left:8px}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:clamp(14px,1.4vw,32px)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-size:clamp(20px,1.2vw + 6px,36px);letter-spacing:.01em;min-height:44px}
+.brand svg{width:clamp(30px,2vw,52px);height:auto}
+.nav{display:flex;align-items:center;gap:clamp(8px,1.6vw,40px);font-size:var(--fs-small)}
+.nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:4px}
+.nav a:hover{color:var(--sun-text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:.8em 1.3em;border-radius:999px;font-weight:700;text-decoration:none;font-size:var(--fs-small);transition:transform .2s var(--ease),background-color .2s,box-shadow .2s}
+.btn-ink{background:var(--ink);color:#fff;box-shadow:0 6px 18px -8px rgba(19,48,59,.55)}
+.btn-ink:hover{transform:translateY(-2px);background:#0B222B}
+.btn-line{border:2px solid var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:1.1em;height:1.1em}
+
+/* hero */
+.hero{position:relative;min-height:calc(100svh - 80px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);grid-template-rows:1fr auto;column-gap:clamp(16px,3vw,80px);padding-bottom:clamp(16px,2vw,48px)}
+.hero-copy{align-self:center;padding-top:clamp(0px,1vw,32px)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(40px,min(4.4vw,7.4vh),170px);line-height:.98;letter-spacing:-.02em;margin:0 0 .35em;text-wrap:balance}
+h1 .hl{color:var(--sun-text)}
+.lede{max-width:46ch;color:var(--ink-2);margin:0 0 1.2em}
+.lede strong{color:var(--ink);font-weight:700}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.medal-stage{position:relative;align-self:stretch;display:flex;justify-content:center;align-items:flex-start;min-height:0}
+.medal-hang{width:min(100%,clamp(220px,min(23vw,41vh),760px));transform-origin:50% 0;}
+.medal-hang svg{width:100%;height:auto;overflow:visible}
+.tag{font-family:var(--body);font-weight:700;font-size:clamp(12px,.3vw + 8px,16px);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.tag b{font-family:var(--mono);font-weight:400;letter-spacing:.02em}
+.medal-note{position:absolute;right:0;bottom:4%;text-align:right}
+
+/* course */
+.course{grid-column:1/-1;position:relative;margin-top:clamp(4px,1vw,24px);padding-bottom:clamp(36px,3vw,64px)}
+.mk.first span{left:-8px;transform:none}
+.mk.last span{right:-8px}
+.course-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.course-head .tag b{color:var(--sun-text);font-weight:400}
+.course-svg{width:100%;height:clamp(96px,min(8vw,12.5vh),280px);overflow:visible;margin-top:clamp(18px,1.8vw,50px)}
+.course-svg .base{fill:none;stroke:var(--peach);stroke-width:14;stroke-linecap:round}
+.course-svg .dash{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:2 10;stroke-linecap:round;opacity:.45}
+.course-svg .done{fill:none;stroke:var(--sun);stroke-width:14;stroke-linecap:round}
+.course-svg .window{fill:none;stroke:var(--teal);stroke-width:4;stroke-linecap:round}
+.runner{fill:var(--ink)}
+.runner-halo{fill:var(--sun);opacity:.25}
+.marks{position:absolute;inset:0;pointer-events:none}
+.mk{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center}
+.mk i{display:block;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);transition:background-color .35s,transform .35s var(--ease)}
+.mk.lit i{background:var(--gold);transform:scale(1.25)}
+.mk span{position:absolute;white-space:nowrap;padding:2px 8px;text-shadow:0 0 3px var(--ground),0 0 3px var(--ground),0 0 6px var(--ground),0 0 10px var(--ground);font-size:var(--fs-small);font-weight:700;line-height:1.2;text-align:center;transition:opacity .4s,transform .4s var(--ease)}
+.mk span small{display:block;font-weight:400;color:var(--ink-2);font-size:.86em}
+.mk.up span{bottom:calc(100% + 12px)}
+.mk.down span{top:calc(100% + 12px)}
+.mk.finish i{width:22px;height:22px;background:var(--sun);border-color:var(--on-sun)}
+.mk .flag{position:absolute;bottom:calc(100% + 4px);left:50%;width:30px;height:auto}
+.mk.finish span{top:calc(100% + 12px);bottom:auto}
+.js .mk span{opacity:.55}
+.js .mk.lit span{opacity:1}
+.mk.mobile-hide{}
+
+/* timeline section */
+.plan{background:var(--sun);color:var(--on-sun);padding-block:clamp(64px,7vw,200px);position:relative;overflow:hidden}
+.plan h2,.spec h2,.concepts h2,.facts h2,.close h2{font-family:var(--display);font-size:var(--fs-h2);line-height:1;letter-spacing:-.015em;margin:0 0 .45em;text-wrap:balance}
+.plan-intro{max-width:46ch;margin:0 0 clamp(32px,4vw,96px)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;position:relative;counter-reset:s}
+.steps::before{content:"";position:absolute;left:0;right:0;top:27px;height:4px;background:var(--on-sun);opacity:.85;border-radius:4px}
+.steps li{position:relative;padding:0 clamp(8px,1vw,28px) 0 0;counter-increment:s}
+.steps .dot{width:58px;height:58px;border-radius:50%;background:var(--ground);border:4px solid var(--on-sun);display:grid;place-items:center;font-family:var(--mono);font-size:20px;position:relative;margin-bottom:18px}
+.steps li:last-child .dot{background:var(--on-sun);color:var(--gold)}
+.steps h3{font-size:clamp(17px,.7vw + 10px,30px);line-height:1.15;margin:0 0 .4em}
+.steps p{margin:0;font-size:var(--fs-small);line-height:1.5}
+.steps .span-note{display:inline-block;margin-top:.6em;font-family:var(--mono);font-size:clamp(12px,.3vw + 8px,16px);background:var(--on-sun);color:var(--gold);padding:.25em .6em;border-radius:6px}
+.plan-foot{display:flex;flex-wrap:wrap;gap:16px 48px;margin-top:clamp(40px,4vw,96px);padding-top:24px;border-top:2px solid rgba(15,34,41,.35);font-size:var(--fs-small);max-width:none}
+.plan-foot p{margin:0;max-width:52ch}
+.plan-foot b{font-weight:700}
+
+/* spec */
+.spec{padding-block:clamp(56px,6vw,180px);display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(24px,4vw,120px);align-items:center}
+.spec-copy p{color:var(--ink-2);max-width:42ch}
+.spec-fig{position:relative}
+.spec-fig svg{width:100%;height:auto;overflow:visible}
+.call line,.call path{stroke:var(--ink);stroke-width:2;fill:none}
+.call circle{fill:var(--sun);stroke:var(--ink);stroke-width:2}
+.call text{font-family:var(--body);font-size:21px;font-weight:700;fill:var(--ink)}
+.call text.sub{font-family:var(--body);font-size:14px;font-weight:700;fill:var(--ink-2);letter-spacing:.1em}
+.js .call line,.js .call path{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);transition:stroke-dashoffset 1s var(--ease)}
+.js .call text,.js .call circle{opacity:0;transition:opacity .6s .5s}
+.spec-fig.in .call line,.spec-fig.in .call path{stroke-dashoffset:0}
+.spec-fig.in .call text,.spec-fig.in .call circle{opacity:1}
+.spec-fig.in .call:nth-child(2) *{transition-delay:.15s}
+.spec-fig.in .call:nth-child(3) *{transition-delay:.3s}
+.spec-fig.in .call:nth-child(4) *{transition-delay:.45s}
+.spec-fig.in .call:nth-child(5) *{transition-delay:.6s}
+.spec-list{display:none}
+
+/* concepts */
+.concepts{padding-block:clamp(48px,5vw,160px);background:var(--paper)}
+.concepts-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,72px)}
+.concepts-head p{max-width:44ch;color:var(--ink-2);margin:0}
+.gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(16px,2vw,48px)}
+.concept{margin:0;border-radius:28px;padding:clamp(20px,2.5vw,64px);position:relative;overflow:hidden}
+.concept:nth-child(1){background:var(--peach)}
+.concept:nth-child(2){background:#CFEFEA}
+.concept svg{width:min(100%,clamp(200px,22vw,620px));margin-inline:auto;height:auto}
+.concept figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:clamp(12px,1.4vw,32px);font-size:var(--fs-small)}
+.concept figcaption b{font-size:1.1em}
+.badge{font-family:var(--body);font-weight:700;font-size:clamp(12px,.3vw + 8px,16px);letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--ink);border-radius:999px;padding:.2em .8em;white-space:nowrap;align-self:start}
+
+/* facts */
+.facts{padding-block:clamp(64px,7vw,200px)}
+.facts dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,80px);margin:0}
+.facts dt{font-family:var(--display);font-size:clamp(22px,1.4vw + 6px,48px);line-height:1.1;margin-bottom:.5em;padding-top:18px;border-top:4px solid var(--ink)}
+.facts dd{margin:0;color:var(--ink-2);font-size:var(--fs-small)}
+.facts dd b{color:var(--ink)}
+
+/* close */
+.close{padding-block:clamp(64px,7vw,200px);background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.close h2{color:#fff;max-width:14ch}
+.close p{max-width:46ch;color:#D6E2E4}
+.ask{list-style:none;padding:0;margin:clamp(24px,3vw,64px) 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ask li{border-top:3px solid var(--sun);padding-top:14px;font-weight:700;font-size:clamp(17px,.7vw + 10px,30px);line-height:1.2}
+.ask li small{display:block;font-weight:400;font-size:var(--fs-small);color:#B9CCD0;margin-top:.3em}
+.mail{display:inline-flex;align-items:center;gap:.5em;font-family:var(--display);font-size:clamp(26px,3.4vw,96px);color:var(--gold);text-decoration:none;line-height:1.1;min-height:48px;word-break:break-word}
+.mail:hover{text-decoration:underline}
+.close .btn{background:var(--sun);color:var(--on-sun);margin-top:24px}
+.close .btn:hover{transform:translateY(-2px)}
+.close :focus-visible{outline-color:var(--gold)}
+footer{background:var(--ink);color:#B9CCD0;font-size:var(--fs-small);padding-block:24px 40px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:#fff;display:inline-flex;align-items:center;min-height:44px}
+
+/* motion */
+@keyframes swing{0%{transform:rotate(9deg)}30%{transform:rotate(-5deg)}55%{transform:rotate(2.5deg)}78%{transform:rotate(-1deg)}100%{transform:rotate(0)}}
+@keyframes sway{0%,100%{transform:rotate(-1.1deg)}50%{transform:rotate(1.1deg)}}
+@keyframes glint{0%{transform:translateX(-260px) rotate(20deg)}100%{transform:translateX(260px) rotate(20deg)}}
+.medal-hang.arrive{opacity:1;transform:none;animation:swing 2.2s var(--ease) both;transition:opacity .5s}
+.medal-hang.idle{opacity:1;animation:sway 6s ease-in-out infinite}
+.glint{animation:glint 7s ease-in-out infinite;animation-delay:3s;mix-blend-mode:screen}
+.paused .glint,.paused .medal-hang.idle{animation-play-state:paused}
+
+/* large screens */
+@media (min-width:2000px){
+  :root{--fs-body:30px;--fs-small:23px}
+  h1{font-size:min(4.6vw,8.8vh)}
+  .btn{min-height:68px;padding:.8em 1.5em}
+  .nav{font-size:24px}
+  .lede{max-width:44ch}
+  .tag{font-size:18px}
+  .steps::before{top:39px}
+  .steps .dot{width:82px;height:82px;font-size:28px}
+  .mk i{width:22px;height:22px}
+}
+
+/* tablet */
+@media (max-width:1100px){
+  .steps{grid-template-columns:1fr;gap:28px}
+  .steps::before{left:27px;right:auto;top:0;bottom:0;width:4px;height:auto}
+  .steps li{display:grid;grid-template-columns:58px 1fr;column-gap:20px;padding:0}
+  .steps .dot{margin:0;grid-row:span 3}
+  .facts dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ask{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mk.opt{display:none}
+}
+
+/* phone */
+@media (max-width:760px){
+  .nav a:not(.btn){display:none}
+  .nav .btn{padding:.6em 1em}
+  .hero{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);grid-template-rows:none;grid-template-areas:"h1 h1" "medal course" "cta cta" "lede lede";row-gap:18px;column-gap:8px;min-height:0;padding-bottom:28px}
+  .hero-copy{display:contents}
+  h1{grid-area:h1;font-size:clamp(36px,10.2vw,46px);margin:6px 0 0;line-height:1}
+  .medal-stage{grid-area:medal;flex-direction:column;align-items:center;justify-content:flex-start}
+  .medal-hang{width:100%;max-width:200px}
+  .medal-note{position:static;text-align:center;margin:10px 0 0}
+  .course{grid-area:course;margin:0;padding:0}
+  .course-head{display:none}
+  .course-svg{height:330px;margin-top:0}
+  .mk.m-hide{display:none}
+  .mk span{white-space:normal;width:max-content;max-width:min(132px,26vw + 30px);font-size:14px;line-height:1.25;padding:2px 6px}
+  .mk.up span,.mk.down span,.mk.finish span{top:50%;bottom:auto;left:calc(100% + 6px);right:auto;transform:translateY(-50%)}
+  .mk.finish span{left:calc(100% + 6px)}
+  .mk .flag{left:-10px;bottom:calc(100% + 2px)}
+  .cta-row{grid-area:cta}
+  .lede{grid-area:lede;font-size:17px;margin:0}
+  .cta-row .btn{flex:1 1 100%}
+  .spec{grid-template-columns:1fr}
+  .spec-fig .call{display:none}
+  .spec-list{display:grid;gap:10px;list-style:none;padding:0;margin:20px 0 0}
+  .spec-list li{display:flex;gap:12px;align-items:baseline;border-top:2px solid var(--ink);padding-top:10px;font-weight:700}
+  .spec-list li span{font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);font-size:13px;min-width:5.2em}
+  .gallery{grid-template-columns:1fr}
+  .facts dl{grid-template-columns:1fr}
+  .ask{grid-template-columns:1fr}
+  .concept{border-radius:20px}
+  .mail{font-size:clamp(24px,7vw,32px)}
+}
+@media (min-width:400px) and (max-width:760px){
+  h1{font-size:46px}
+  .medal-hang{max-width:210px}
+  .course-svg{height:350px}
+  .mk span{font-size:15px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .medal-hang,.medal-hang.arrive,.medal-hang.idle{opacity:1;transform:none;animation:none}
+  .glint{animation:none;opacity:0}
+  .js .mk span{opacity:1}
+  .js .call line,.js .call path{transition:none;stroke-dashoffset:0}
+  .js .call text,.js .call circle{opacity:1;transition:none}
+}
 </style>
 </head>
 <body>
-<main>
-  <h1>RaceKit Works</h1>
-  <p>Custom finisher medals for race organisers in Malaysia.</p>
-  <p>This site is being set up. Reach us at <a href="mailto:hello@racekitworks.com">hello@racekitworks.com</a>.</p>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="zinc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1C2"/><stop offset=".38" stop-color="#D9A04A"/><stop offset=".62" stop-color="#F8DA94"/><stop offset="1" stop-color="#A2722F"/></linearGradient>
+    <linearGradient id="zincS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#9FB2C1"/><stop offset=".7" stop-color="#EEF7FC"/><stop offset="1" stop-color="#7D8FA3"/></linearGradient>
+    <linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#173B49"/><stop offset="1" stop-color="#21566A"/></linearGradient>
+    <symbol id="medal-road" viewBox="420 60 360 570">
+      <path d="M475 75 L560 75 L605 300 L548 325 Z" fill="#F46A2E"/>
+      <path d="M725 75 L640 75 L595 300 L652 325 Z" fill="#13303B"/>
+      <path d="M496 90 L543 90 L580 280 L558 289 Z" fill="#FFBB6A"/>
+      <path d="M704 90 L657 90 L620 280 L642 289 Z" fill="#4FD1C1"/>
+      <text x="519" y="185" transform="rotate(78 519 185)" font-family="Red Hat Mono, monospace" font-size="11" letter-spacing="1.5" fill="#fff" text-anchor="middle">YOUR EVENT • FINISHER</text>
+      <text x="681" y="185" transform="rotate(-78 681 185)" font-family="Red Hat Mono, monospace" font-size="11" letter-spacing="1.5" fill="#fff" text-anchor="middle">YOUR EVENT • FINISHER</text>
+      <path d="M600 276 C675 276 711 312 747 345 L771 433 L745 529 L676 582 L600 617 L524 582 L455 529 L429 433 L453 345 C489 312 525 276 600 276Z" fill="url(#zinc)" stroke="#8B5B23" stroke-width="7"/>
+      <path d="M600 298 C663 298 698 329 727 358 L747 433 L726 516 L663 560 L600 588 L537 560 L474 516 L453 433 L473 358 C502 329 537 298 600 298Z" fill="url(#dawn)" stroke="#FFDDA0" stroke-width="5"/>
+      <circle cx="600" cy="392" r="34" fill="#F7BE70"/>
+      <path d="M476 470 Q551 390 608 421 T728 387 L728 514 L661 557 L600 584 L539 557 L474 514 Z" fill="#F46A2E"/>
+      <path d="M483 492 Q554 423 614 449 T730 412" fill="none" stroke="#FFCE8B" stroke-width="8" stroke-linecap="round"/>
+      <path d="M496 514 Q560 451 621 474 T725 441" fill="none" stroke="#FFA861" stroke-width="5" stroke-linecap="round"/>
+      <text x="600" y="355" font-family="National Park, sans-serif" font-size="27" font-weight="700" letter-spacing="2" fill="#fff" text-anchor="middle">YOUR RACE</text>
+      <text x="600" y="545" font-family="Red Hat Mono, monospace" font-size="16" letter-spacing="4" fill="#fff" text-anchor="middle">FINISHER</text>
+    </symbol>
+    <symbol id="medal-globe" viewBox="420 60 360 570">
+      <path d="M472 72 L553 72 L599 303 L542 321 Z" fill="#283B83"/>
+      <path d="M728 72 L647 72 L601 303 L658 321 Z" fill="#0E9C93"/>
+      <path d="M491 89 L537 89 L576 283 L554 290 Z" fill="#80EAD8"/>
+      <path d="M709 89 L663 89 L624 283 L646 290 Z" fill="#C6F479"/>
+      <text x="517" y="185" transform="rotate(78 517 185)" font-family="Red Hat Mono, monospace" font-size="11" letter-spacing="1.5" fill="#fff" text-anchor="middle">VIRTUAL RUN • FINISHER</text>
+      <text x="683" y="185" transform="rotate(-78 683 185)" font-family="Red Hat Mono, monospace" font-size="11" letter-spacing="1.5" fill="#13303B" text-anchor="middle">VIRTUAL RUN • FINISHER</text>
+      <path d="M600 274 L665 294 L719 324 L750 376 L767 437 L746 501 L713 551 L655 581 L600 614 L545 581 L487 551 L454 501 L433 437 L450 376 L481 324 L535 294Z" fill="url(#zincS)" stroke="#65768C" stroke-width="7"/>
+      <path d="M600 299 L654 316 L702 344 L728 386 L742 437 L724 492 L693 534 L646 559 L600 587 L554 559 L507 534 L476 492 L458 437 L472 386 L498 344 L546 316Z" fill="#192E5B" stroke="#E3EDF6" stroke-width="5"/>
+      <circle cx="600" cy="433" r="98" fill="none" stroke="#58E0C4" stroke-width="5"/>
+      <ellipse cx="600" cy="433" rx="46" ry="98" fill="none" stroke="#58E0C4" stroke-width="4"/>
+      <path d="M505 433 H695 M518 385 Q600 414 682 385 M518 481 Q600 452 682 481" stroke="#58E0C4" stroke-width="4" fill="none"/>
+      <path d="M491 478 Q557 357 707 392" stroke="#FFF0A1" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <circle cx="707" cy="392" r="9" fill="#FFF0A1"/>
+      <text x="600" y="545" font-family="Red Hat Mono, monospace" font-size="13" letter-spacing="3" fill="#fff" text-anchor="middle">ANYWHERE • FINISHER</text>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="wrap top">
+  <a class="brand" href="#main" aria-label="RaceKit Works home">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 2h12l6 22-8 4zM46 2H34l-6 22 8 4z" fill="#F46A2E"/><path d="M32 22l17 6 7 15-7 15-17 6-17-6-7-15 7-15z" fill="#F4B740" stroke="#13303B" stroke-width="4"/><path d="M16 44q8-9 16-4t16-4" stroke="#13303B" stroke-width="4" fill="none"/></svg>
+    RaceKit Works
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="#plan">Timeline</a>
+    <a href="#spec">The medal</a>
+    <a href="#facts">Plain facts</a>
+    <a class="btn btn-ink" href="mailto:hello@racekitworks.com?subject=Medal%20quote">Get a quote</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="wrap hero" aria-labelledby="h1">
+    <div class="hero-copy">
+      <h1 id="h1">Finisher medals, planned <span class="hl">back from your race&nbsp;day.</span></h1>
+      <p class="lede">Custom <strong>70&nbsp;mm shaped zinc-alloy medals</strong> for race organisers, event management companies and virtual-run organisers in Malaysia. A free artwork mock-up, a pre-production sample you sign off, then delivery to one address in Kuala Lumpur or the Klang Valley.</p>
+      <div class="cta-row">
+        <a class="btn btn-ink" href="mailto:hello@racekitworks.com?subject=Medal%20quote&amp;body=Design%20or%20brief%3A%20%0AQuantity%3A%20%0AEvent%20date%3A%20%0ADelivery%20address%3A%20">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+          Email for a medal quote</a>
+        <a class="btn btn-line" href="#plan">How the timeline works</a>
+      </div>
+    </div>
+
+    <div class="medal-stage">
+      <div class="medal-hang" id="heroMedal">
+        <svg viewBox="420 60 360 570" role="img" aria-label="Concept design of a shaped zinc-alloy finisher medal with a printed ribbon (illustrative only)">
+          <defs><clipPath id="medalClip"><path d="M600 276 C675 276 711 312 747 345 L771 433 L745 529 L676 582 L600 617 L524 582 L455 529 L429 433 L453 345 C489 312 525 276 600 276Z"/></clipPath>
+          <linearGradient id="glintG" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+          <use href="#medal-road" x="420" y="60" width="360" height="570"/>
+          <g clip-path="url(#medalClip)"><rect class="glint" x="560" y="200" width="70" height="520" fill="url(#glintG)"/></g>
+        </svg>
+      </div>
+      <p class="tag medal-note">Concept design<br>illustrative only</p>
+    </div>
+
+    <div class="course" id="course">
+      <div class="course-head">
+        <p class="tag" id="courseLabel">Counting back from race day</p>
+        <p class="tag">Lock artwork <b>8+ weeks</b> before delivery</p>
+      </div>
+      <svg class="course-svg" id="courseSvg" viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true">
+        <path id="route" class="base" d="M20 120 C 85 120, 85 55, 150 55 C 260 55, 260 150, 370 150 C 480 150, 480 55, 590 55 C 700 55, 700 150, 810 150 C 920 150, 920 55, 1030 55 C 1140 55, 1140 150, 1250 150 C 1360 150, 1360 55, 1470 55 C 1525 55, 1525 105, 1580 105" vector-effect="non-scaling-stroke"/>
+        <path class="dash" d="M20 120 C 85 120, 85 55, 150 55 C 260 55, 260 150, 370 150 C 480 150, 480 55, 590 55 C 700 55, 700 150, 810 150 C 920 150, 920 55, 1030 55 C 1140 55, 1140 150, 1250 150 C 1360 150, 1360 55, 1470 55 C 1525 55, 1525 105, 1580 105" vector-effect="non-scaling-stroke"/>
+        <path id="routeDone" class="done" d="M20 120 C 85 120, 85 55, 150 55 C 260 55, 260 150, 370 150 C 480 150, 480 55, 590 55 C 700 55, 700 150, 810 150 C 920 150, 920 55, 1030 55 C 1140 55, 1140 150, 1250 150 C 1360 150, 1360 55, 1470 55 C 1525 55, 1525 105, 1580 105" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="marks" id="marks" role="list" aria-label="Order timeline, counted back from race day">
+        <div class="mk up opt m-hide" data-t="0.0857" role="listitem"><i></i><span>Your brief<small>artwork, qty, date, address</small></span></div>
+        <div class="mk down m-hide" data-t="0.2263" role="listitem"><i></i><span>Free mock-up<small>you check the design</small></span></div>
+        <div class="mk up" data-t="0.3668" data-tm="0.04" role="listitem"><i></i><span>Artwork locked<small>8+ weeks before delivery</small></span></div>
+        <div class="mk down opt m-hide" data-t="0.5074" role="listitem"><i></i><span>Sample signed<small>then bulk begins</small></span></div>
+        <div class="mk up opt m-hide" data-t="0.6479" role="listitem"><i></i><span>Bulk &amp; checks</span></div>
+        <div class="mk down" data-t="0.7885" data-tm="0.36" role="listitem"><i></i><span>Sea freight<small>door to door</small></span></div>
+        <div class="mk up" data-t="0.929" data-tm="0.68" role="listitem"><i></i><span>Delivered<small>about 6–8 weeks after artwork lock</small></span></div>
+        <div class="mk finish" data-t="1" data-tm="1" role="listitem"><svg class="flag" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 40V2" stroke="#13303B" stroke-width="3"/><path d="M4 3h22l-5 7 5 7H4z" fill="#13303B"/><path d="M8 6h4v4H8zm8 0h4v4h-4zm-4 4h4v4h-4z" fill="#FFF5EA"/></svg><i></i><span>Race day</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plan" id="plan" aria-labelledby="plan-h">
+    <div class="wrap">
+      <h2 id="plan-h">Working back from race&nbsp;day</h2>
+      <p class="plan-intro">We start from the day the medals must be in your hands and plan backwards. This is the order every medal order follows.</p>
+      <ol class="steps">
+        <li><span class="dot" aria-hidden="true">1</span><h3>You send the brief</h3><p>Your artwork or a written brief, the quantity, the event date and the delivery address.</p></li>
+        <li><span class="dot" aria-hidden="true">2</span><h3>Free artwork mock-up</h3><p>We draw the medal and ribbon for you to check and correct. No charge for the mock-up.</p></li>
+        <li><span class="dot" aria-hidden="true">3</span><h3>Artwork locked, order confirmed</h3><p>Aim to lock the design at least 8 weeks before your delivery date.</p></li>
+        <li><span class="dot" aria-hidden="true">4</span><h3>Pre-production sample</h3><p>A real sample made before bulk production. Bulk starts only after you sign it off.</p></li>
+        <li><span class="dot" aria-hidden="true">5</span><h3>Bulk production &amp; checks</h3><p>Medals made to the signed sample, checked, and bagged one by one.</p></li>
+        <li><span class="dot" aria-hidden="true">6</span><h3>Shipped by sea</h3><p>Sea freight, then delivery to your door.</p></li>
+        <li><span class="dot" aria-hidden="true">7</span><h3>Delivered before race day</h3><p>To one address in Kuala Lumpur or the Klang Valley.<br><span class="span-note">about 6–8 weeks after step 3</span></p></li>
+      </ol>
+      <div class="plan-foot">
+        <p><b>Not a fixed promise yet.</b> The timing is an estimate until we confirm it with you in writing.</p>
+        <p><b>Short on time?</b> Ask us to quote air freight separately for an urgent order.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap spec" id="spec" aria-labelledby="spec-h">
+    <div class="spec-copy">
+      <h2 id="spec-h">One medal, made to your&nbsp;design.</h2>
+      <p>Every design gets its own mould, so the medal takes the shape of your artwork instead of a stock blank.</p>
+      <ul class="spec-list">
+        <li><span>70 mm</span>Shaped zinc alloy</li>
+        <li><span>Finish</span>Painted colours</li>
+        <li><span>Ribbon</span>Heat-transfer printed</li>
+        <li><span>Pack</span>Individually bagged</li>
+        <li><span>Mould</span>One per design</li>
+      </ul>
+    </div>
+    <figure class="spec-fig" id="specFig" style="margin:0">
+      <svg viewBox="20 20 860 690" role="img" aria-label="Annotated concept medal: 70 mm shaped zinc alloy, painted finish, heat-transfer printed ribbon, individually bagged, one mould per design">
+        <use href="#medal-road" x="270" y="40" width="360" height="570"/>
+        <g class="call"><path d="M560 470 H700 L720 450" /><circle cx="560" cy="470" r="7"/><text x="730" y="440">70 mm</text><text class="sub" x="730" y="464">SHAPED ZINC ALLOY</text></g>
+        <g class="call"><path d="M430 470 H240 L220 450"/><circle cx="430" cy="470" r="7"/><text x="60" y="440">Painted</text><text class="sub" x="60" y="464">COLOUR FINISH</text></g>
+        <g class="call"><path d="M380 160 H230 L210 140"/><circle cx="380" cy="160" r="7"/><text x="40" y="130">Printed ribbon</text><text class="sub" x="40" y="154">HEAT-TRANSFER</text></g>
+        <g class="call"><path d="M520 190 H680 L700 170"/><circle cx="520" cy="190" r="7"/><text x="710" y="160">One mould</text><text class="sub" x="710" y="184">PER DESIGN</text></g>
+        <g class="call"><path d="M450 600 V660 H520"/><circle cx="450" cy="600" r="7"/><text x="530" y="660">Bagged one by one</text><text class="sub" x="530" y="684">INDIVIDUAL BAG</text></g>
+      </svg>
+      <figcaption class="tag" style="margin-top:8px">Concept design · illustrative, not a client order</figcaption>
+    </figure>
+  </section>
+
+  <section class="concepts" aria-labelledby="con-h">
+    <div class="wrap">
+      <div class="concepts-head">
+        <h2 id="con-h">Road race or virtual&nbsp;run.</h2>
+        <p>Two concept designs we drew to show the style. They are illustrations, not medals made for a client. Yours starts from your own artwork or brief.</p>
+      </div>
+      <div class="gallery">
+        <figure class="concept">
+          <svg viewBox="420 60 360 570" role="img" aria-label="Concept road-race medal in gold zinc alloy with a sunrise over a road (illustrative)"><use href="#medal-road" x="420" y="60" width="360" height="570"/></svg>
+          <figcaption><b>Road race concept</b><span class="badge">Concept · illustrative</span></figcaption>
+        </figure>
+        <figure class="concept">
+          <svg viewBox="420 60 360 570" role="img" aria-label="Concept virtual-run medal in silver zinc alloy with a globe and route line (illustrative)"><use href="#medal-globe" x="420" y="60" width="360" height="570"/></svg>
+          <figcaption><b>Virtual run concept</b><span class="badge">Concept · illustrative</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap facts" id="facts" aria-labelledby="facts-h">
+    <h2 id="facts-h">The plain facts</h2>
+    <dl>
+      <div><dt>Where it's made</dt><dd>At a <b>specialist medal factory in China</b>, then shipped to Malaysia and delivered to one address in Kuala Lumpur or the Klang Valley.</dd></div>
+      <div><dt>What you approve</dt><dd>A free artwork mock-up first, then a physical <b>pre-production sample</b>. Bulk follows the sample you signed.</dd></div>
+      <div><dt>How long</dt><dd><b>About 6–8 weeks</b> door to door by sea once artwork is final and the order is confirmed. Fixed only when we confirm it in writing.</dd></div>
+      <div><dt>How payment works</dt><dd><b>50% deposit</b> when you confirm the order; the balance on the terms in your formal quotation.</dd></div>
+    </dl>
+  </section>
+
+  <section class="close" id="contact" aria-labelledby="close-h">
+    <div class="wrap">
+      <h2 id="close-h">Tell us about your race.</h2>
+      <p>Email us with these four things and we will reply with a quote and start your free mock-up.</p>
+      <ul class="ask">
+        <li>Design or brief<small>artwork file, sketch or a few lines</small></li>
+        <li>Quantity<small>how many finishers</small></li>
+        <li>Event date<small>and when you need delivery</small></li>
+        <li>Delivery address<small>one address, KL / Klang Valley</small></li>
+      </ul>
+      <a class="mail" href="mailto:hello@racekitworks.com?subject=Medal%20quote&amp;body=Design%20or%20brief%3A%20%0AQuantity%3A%20%0AEvent%20date%3A%20%0ADelivery%20address%3A%20">hello@racekitworks.com</a><br>
+      <a class="btn" href="mailto:hello@racekitworks.com?subject=Medal%20quote&amp;body=Design%20or%20brief%3A%20%0AQuantity%3A%20%0AEvent%20date%3A%20%0ADelivery%20address%3A%20">Start a medal quote email</a>
+    </div>
+  </section>
 </main>
+<footer class="wrap">
+  <span>RaceKit Works · Custom finisher medals for race organisers in Malaysia</span>
+  <span>All medal images are concept designs, illustrative only · <a href="mailto:hello@racekitworks.com?subject=Medal%20quote">hello@racekitworks.com</a></span>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement; root.classList.add('js');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var route=document.getElementById('route'), done=document.getElementById('routeDone');
+  var svg=document.getElementById('courseSvg'), marks=[].slice.call(document.querySelectorAll('#marks .mk'));
+  var medal=document.getElementById('heroMedal'), label=document.getElementById('courseLabel');
+  var paths=[].slice.call(svg.querySelectorAll('path'));
+  var D_WIDE=route.getAttribute('d'), D_TALL='M34 12 C 80 70, 84 150, 50 220 S 14 340, 44 410 S 84 520, 50 588';
+  var mq=window.matchMedia('(max-width:760px)'), len, tall;
+  function tOf(m){ return parseFloat(tall ? (m.dataset.tm||m.dataset.t) : m.dataset.t); }
+  function setMode(){
+    tall=mq.matches;
+    paths.forEach(function(p){p.setAttribute('d', tall?D_TALL:D_WIDE)});
+    svg.setAttribute('viewBox', tall?'0 0 200 600':'0 0 1600 200');
+    len=route.getTotalLength();
+    measureSL();
+  }
+  // the route uses non-scaling strokes, so dashes are measured in screen pixels, not user units
+  var SL=0, doneT=0;
+  function measureSL(){
+    var r=svg.getBoundingClientRect(), vb=svg.viewBox.baseVal, sx=r.width/vb.width, sy=r.height/vb.height, prev=null, L=0;
+    for(var i=0;i<=240;i++){ var p=route.getPointAtLength(len*i/240), q={x:p.x*sx,y:p.y*sy}; if(prev) L+=Math.hypot(q.x-prev.x,q.y-prev.y); prev=q; }
+    SL=Math.ceil(L)+2; done.style.strokeDasharray=SL+' '+SL; done.style.strokeDashoffset=SL*(1-doneT);
+  }
+  setMode();
+
+  function place(){
+    var r=svg.getBoundingClientRect(), vb=svg.viewBox.baseVal;
+    var sx=r.width/vb.width, sy=r.height/vb.height;
+    var host=svg.parentNode.getBoundingClientRect();
+    marks.forEach(function(m){
+      var p=route.getPointAtLength(len*tOf(m));
+      m.style.left=(r.left-host.left+p.x*sx)+'px';
+      m.style.top=(r.top-host.top+p.y*sy)+'px';
+      var sp=m.querySelector('span'); if(sp){ sp.style.maxWidth=''; if(tall){ var room=Math.floor(host.right-(r.left+p.x*sx)-18); sp.style.maxWidth=Math.max(80,room)+'px'; } }
+    });
+  }
+  place(); window.addEventListener('resize',function(){var was=tall; setMode(); place();});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(place);
+
+  // runner dot
+  var NS='http://www.w3.org/2000/svg';
+  var holder=document.getElementById('marks');
+  var runner=document.createElement('div');
+  runner.setAttribute('aria-hidden','true');
+  runner.style.cssText='position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:#13303B;box-shadow:0 0 0 8px rgba(244,106,46,.28),0 6px 14px -4px rgba(19,48,59,.6);z-index:2;will-change:transform';
+  holder.appendChild(runner);
+  function setRunner(t){
+    var r=svg.getBoundingClientRect(), vb=svg.viewBox.baseVal, host=svg.parentNode.getBoundingClientRect();
+    var p=route.getPointAtLength(len*t);
+    runner.style.transform='translate('+(r.left-host.left+p.x*r.width/vb.width)+'px,'+(r.top-host.top+p.y*r.height/vb.height)+'px)';
+  }
+  function light(t,dir){ marks.forEach(function(m){ var mt=tOf(m); m.classList.toggle('lit', dir<0 ? mt>=t-0.005 : mt<=t+0.005); }); }
+
+  if(reduce){
+    doneT=1; done.style.strokeDashoffset=0; marks.forEach(function(m){m.classList.add('lit')});
+    medal.classList.add('idle'); setRunner(1); label.textContent='Counted back from race day';
+    return;
+  }
+  var ease=function(x){return 1-Math.pow(1-x,3)};
+  var easeIO=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+  var visible=true, phase=0, start=null, pausedAt=null;
+  // phase 0: run back from race day (t 1 -> 0); phase 1: build forward (fill); phase 2: flow loop
+  var BACK=2800, FWD=2300, LOOP=5200; setRunner(1);
+  function frame(ts){
+    if(!visible){ pausedAt=pausedAt||ts; requestAnimationFrame(frame); return; }
+    if(pausedAt){ start+=ts-pausedAt; pausedAt=null; }
+    if(start===null) start=ts;
+    var e=ts-start;
+    if(phase===0){
+      var k=Math.min(e/BACK,1), t=1-easeIO(k);
+      setRunner(t); light(t,-1);
+      if(k>=1){phase=1;start=ts;label.textContent='Planned forward to race day';}
+    } else if(phase===1){
+      var k2=Math.min(e/FWD,1), t2=ease(k2);
+      setRunner(t2); doneT=t2; done.style.strokeDashoffset=SL*(1-t2);
+      marks.forEach(function(m){ m.classList.toggle('lit', tOf(m)<=t2+0.005); });
+      if(k2>=1){phase=2;start=ts; medal.classList.add('arrive');
+        setTimeout(function(){medal.classList.remove('arrive');medal.classList.add('idle');},2300);}
+    } else {
+      var k3=(e%LOOP)/LOOP; setRunner(easeIO(k3));
+      if(e>LOOP*1000) start=ts;
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  var hero=document.querySelector('.hero');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ visible=es[0].isIntersecting && !document.hidden; root.classList.toggle('paused',!visible); }).observe(hero);
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) visible=false; else visible=true; });
+
+  // spec callouts
+  var fig=document.getElementById('specFig');
+  [].forEach.call(fig.querySelectorAll('.call path'),function(p){p.style.setProperty('--len',Math.ceil(p.getTotalLength()))});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){fig.classList.add('in'); io.disconnect();} },{threshold:.35});
+    io.observe(fig);
+  } else fig.classList.add('in');
+})();
+</script>
 </body>
 </html>
